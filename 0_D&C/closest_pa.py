@@ -1,11 +1,7 @@
 """
-Problem:
-Given an array of points P = [(x1,y1),(x2,y2), ..., (xn,yn)].
-Point i has coordinate x ith and y ith.
+Given the array of points P = [(x1,y1),(x2,y2), ..., (xn,yn)].
+Point i has coordinate xi^th and yi^th.
 Find the closest pair of points in an array and its distance
-Example:
-find_closest_pair([(2, 3), (12, 30), (40, 50), (5, 1), (12, 10), (3, 4), (1, 1), (-900, 3), (100, 3)])
--> ((2,3), (3,4))
 """
 import math
 
@@ -13,8 +9,9 @@ Point = tuple[int, int]
 
 
 def calculate_distance_sqr(point1: Point, point2: Point) -> float:
-    """calculate eucidean distance between 2 points
-    calculate_distance_sqr([1,2],[2,4]) -> 2.236067
+    """
+    Calculate euclidean distance between two points
+    Ex: Calculate_distance_sqr([1,2],[2,4]) -> 2.236067
     """
     return math.sqrt((point1[0] - point2[0])**2 + (point1[1] - point2[1])**2)
 
@@ -36,9 +33,9 @@ def _recurs_find_closest_pair(Px: list[Point], Py: list[Point]) -> tuple[Point, 
         return brute_force(Px)
 
     middle = n_point // 2
-    # the points in Qx, Qy are same, but Qx is sorted by x, Qy is sorted by y
+    # --> the points in Qx, Qy are the same, but Qx is sorted by x, while Qy is sorted by y
     Qx, Qy = Px[:middle], []
-    # the same with Rx, Ry
+    # --> the points in Rx, Ry are the same, but Rx is sorted by x, while Ry is sorted by y
     Rx, Ry = Px[middle:], []
 
     x_threshold = Qx[-1][0]
